@@ -37,6 +37,7 @@ public class SexoController {
     }
     @RequestMapping(value="/sexo/agregar.htm", method = RequestMethod.GET )
     public ModelAndView Agregar(){
+     
      mav.addObject(new Sexo());
      mav.setViewName("sexo/agregar");
      return mav;

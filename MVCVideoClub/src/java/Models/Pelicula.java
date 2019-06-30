@@ -12,16 +12,16 @@ package Models;
  * @author alexa
  */
 public class Pelicula {
-    int id;
-    int genId;
-    int forId;
-    int dirId;
-    String nombre;
-    double costo;
-    String fecha;
-    Genero genero =new Genero();
-    Formato formato = new Formato();
-    Director director = new Director();
+    private int id;
+    private int genId;
+    private int forId;
+    private int dirId;
+    private String nombre;
+    private double costo;
+    private String fecha;
+    private Genero genero =new Genero();
+    private Formato formato = new Formato();
+    private Director director = new Director();
     
     public Pelicula() {
     }

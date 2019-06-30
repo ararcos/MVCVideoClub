@@ -39,6 +39,7 @@
                                     <td>${dato.PEL_COSTO}</td>
                                     <td>${dato.PEL_FECHA_ESTRENO}</td>
                                     <td>
+                                        <a href="reparto.htm?id=${dato.PEL_ID}" class="btn btn-success">Reparto</a>
                                         <a href="editar.htm?id=${dato.PEL_ID}" class="btn btn-warning">Editar</a>
                                         <a href="eliminar.htm?id=${dato.PEL_ID}" class="btn btn-warning">Eliminar</a>
 

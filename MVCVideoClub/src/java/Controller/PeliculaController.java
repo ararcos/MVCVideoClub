@@ -6,6 +6,8 @@
 package Controller;
 
 import Config.Conexion;
+import Mapper.peliculaMapper;
+import Models.ActorPelicula;
 import Models.Director;
 import Models.Formato;
 import Models.Genero;
@@ -147,9 +149,43 @@ public class PeliculaController {
     }
     @RequestMapping(value="/pelicula/agregarGenero.htm", method = RequestMethod.POST )
     public ModelAndView AgregarGenero(Genero genero){
-        String sql="insert into genero(GER_NOMBRE) values(?)";
+        String sql="insert into genero(GEN_NOMBRE) values(?)";
         
         this.jdbcTemplate.update(sql,genero.getNombre());
      return new ModelAndView("redirect:"+ruta);
+    }
+    @RequestMapping(value="/pelicula/reparto.htm", method = RequestMethod.GET )
+    public ModelAndView Reparto(HttpServletRequest request){
+        id=Integer.parseInt(request.getParameter("id"));
+        String sql="SELECT * FROM pelicula WHERE PEL_ID="+id;
+        String sql2="SELECT ap.*,a.ACT_NOMBRE FROM actor_pelicula ap, actor a WHERE ap.ACT_ID=a.ACT_ID AND ap.PEL_ID ="+id;
+        String sql3="SELECT * FROM actor ";
+        peli = this.jdbcTemplate.queryForObject(sql,new peliculaMapper());
+        List datos = this.jdbcTemplate.queryForList(sql2);
+        List listActores = this.jdbcTemplate.queryForList(sql3);
+        mav.addObject("listActor",listActores);
+        ActorPelicula actor=new ActorPelicula();
+        actor.setPelicula(peli);
+        mav.addObject("actor",actor);
+        mav.addObject("actores",datos);
+        mav.setViewName("pelicula/reparto");
+     return mav;
+    }
+    @RequestMapping(value="/pelicula/reparto.htm", method = RequestMethod.POST )
+    public ModelAndView Reparto(ActorPelicula actorPelicula){
+        ActorPelicula actor = new ActorPelicula();
+        actor.setPelicula(peli);
+        String sql="insert into actor_pelicula(APL_PAPEL,PEL_ID,ACT_ID) values(?,?,?)";
+        this.jdbcTemplate.update(sql,actorPelicula.getPapel(),peli.getId(),actorPelicula.getActId());
+        String sql2="SELECT ap.*,a.ACT_NOMBRE FROM actor_pelicula ap, actor a WHERE ap.ACT_ID=a.ACT_ID AND ap.PEL_ID ="+id;
+        String sql3="SELECT * FROM actor ";
+        List datos = this.jdbcTemplate.queryForList(sql2);
+        List listActores = this.jdbcTemplate.queryForList(sql3);
+        actor.setPelicula(actorPelicula.getPelicula());
+        mav.addObject("listActor",listActores);
+        mav.addObject("actor",actor);
+        mav.addObject("actores",datos);
+        mav.setViewName("pelicula/reparto");
+     return mav;
     }
 }
