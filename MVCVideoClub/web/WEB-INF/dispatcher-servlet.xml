@@ -16,7 +16,8 @@
    <context:component-scan base-package="Controller"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
-    <mvc:view-controller path="/menumru.htm" view-name="menumru"/>
+    <mvc:view-controller path="/header.htm" view-name="header"/>
+    <mvc:view-controller path="/footer.htm" view-name="footer"/>
     
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 

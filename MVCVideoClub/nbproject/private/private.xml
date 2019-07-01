@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/web/WEB-INF/jsp/pelicula/reparto.jsp</file>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/web/WEB-INF/jsp/pelicula/agregar.jsp</file>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/src/java/Models/ActorPelicula.java</file>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/web/WEB-INF/jsp/pelicula/index.jsp</file>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/web/WEB-INF/jsp/genero/eliminar.jsp</file>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/src/java/Controller/PeliculaController.java</file>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/web/WEB-INF/jsp/actorPelicula/agregar.jsp</file>
-            <file>file:/C:/Users/alexa/Downloads/MVCVideoClub-master/MVCVideoClub-master/MVCVideoClub/src/java/Controller/ActorPeliculaController.java</file>
+            <file>file:/D:/Documentos/PROYECTOS%20GIT/MVCVideoClub/MVCVideoClub/web/WEB-INF/jsp/index.jsp</file>
+            <file>file:/D:/Documentos/PROYECTOS%20GIT/MVCVideoClub/MVCVideoClub/src/java/Controller/ReporteController.java</file>
+            <file>file:/D:/Documentos/PROYECTOS%20GIT/MVCVideoClub/MVCVideoClub/web/WEB-INF/jsp/reporte/prueba.jsp</file>
+            <file>file:/D:/Documentos/PROYECTOS%20GIT/MVCVideoClub/MVCVideoClub/src/java/Controller/PeliculaController.java</file>
         </group>
     </open-files>
 </project-private>

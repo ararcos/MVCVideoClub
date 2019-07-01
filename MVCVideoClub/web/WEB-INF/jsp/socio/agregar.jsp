@@ -24,9 +24,12 @@
                     <input type="text" name="telefono" class="form-control">
                     <label>CORREO</label>
                     <input type="text" name="correo" class="form-control">
-                    <input type="submit" value="Agregar" class="btn btn-success">
-                    <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
+                    <div class="ml-1 form-group row">
+                            <input type="submit" value="Guardar" class="btn btn-outline-success mt-5 col-sm-4">
+                            <div class="col-sm-3"></div>
+                        <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
 
+                        </div>
                 </form>
                 </div>
             </div>
