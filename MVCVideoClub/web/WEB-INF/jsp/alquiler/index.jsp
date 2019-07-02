@@ -16,7 +16,7 @@
                 <div class="page-title">
                     <div class="title_left">
 
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>Registrar Alquiler</h3>
                     </div>
                 </div>
 

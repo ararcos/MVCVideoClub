@@ -68,8 +68,8 @@
                       <li><a href="/MVCVideoClub/socio/index.htm">Socio</a></li>
                       <li><a href="/MVCVideoClub/actor/index.htm">Actores</a></li>
                       <li><a href="/MVCVideoClub/formato/index.htm">Formato</a></li>
-                      <li><a href="/MVCVideoClub/generos/index.htm">Generos</a></li>
-                      <li><a href="/MVCVideoClub/directores/index.htm">Directores</a></li>
+                      <li><a href="/MVCVideoClub/genero/index.htm">Generos</a></li>
+                      <li><a href="/MVCVideoClub/director/index.htm">Directores</a></li>
                       
                     </ul>
                   </li>

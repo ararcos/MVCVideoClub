@@ -10,62 +10,78 @@
     </head>
     <body>
         <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>REPORTE DE VENTAS MENSUALES</h3>
-              </div>
-            </div>
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>REPORTE DE VENTAS MENSUALES POR AÑO</h3>
 
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  
-                  <div class="x_content">
-                      <div class="chart-container">
-    
-        <canvas id="myChart" height="25vh" width="60vw"></canvas
-</div>
-                  </div>
+                    </div>
                 </div>
-              </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+
+                            <div class="x_content">
+                                <div class="chart-container">
+                                    <form method="POST" >
+                                            <label  id="error" class="text-danger h6"> Ingrese el año que quiere consultar los alquileres </label>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2">Año</label>
+                                            <input type="text" name="anio" class="form-control col-sm-3">
+                                            
+                                            <input type="submit" class="btn btn-outline-warning col-sm-1" value="buscar">
+                                        </div>
+                                        
+                                    </form>
+                                    <c:if test="${datos!=null}">
+                                        <canvas id="myChart" height="20vh" width="60vw"></canvas
+                                           
+                                        </c:if>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>>
-        sadas
-        
-        
+        </div>
+
+
     </body>
+    
     <%@include file="../footer.jsp" %>
     <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
+       
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
 
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 1, 5, 2, 2, 3, 4]
-        }]
-    },
+            // The data for our dataset
+            data: {
+                labels: ${meses},
+                datasets: [{
+                        label: 'Alquiler Mensual',
+                        borderColor: 'rgb(217, 15, 213)',
+                        fill: false,
+                        
+                        data: ${alquiler}
+                    }]
+            },
 
-    // Configuration options go here
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                 }
-            }]
-        }
-    }
-});
+            }
+        });
     </script>
 </html>
