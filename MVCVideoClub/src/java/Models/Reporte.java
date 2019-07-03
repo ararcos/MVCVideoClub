@@ -10,26 +10,28 @@ package Models;
  * @author alexa
  */
 public class Reporte {
-    int alquiler;
-    String mes;
+    int valores;
+    String labels;
 
     public Reporte() {
     }
 
-    public int getAlquiler() {
-        return alquiler;
+    public int getValores() {
+        return valores;
     }
 
-    public void setAlquiler(int alquiler) {
-        this.alquiler = alquiler;
+    public void setValores(int valores) {
+        this.valores = valores;
     }
 
-    public String getMes() {
-        return mes;
+    public String getLabels() {
+        return labels;
     }
 
-    public void setMes(String mes) {
-        this.mes = mes;
+    public void setLabels(String labels) {
+        this.labels = labels;
     }
+
+    
     
 }

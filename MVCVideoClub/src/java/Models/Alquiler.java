@@ -18,7 +18,16 @@ public class Alquiler {
     private double valor;
     private String fechaEntrega;
     private Socio socio=new Socio();
+    private Pelicula pelicula = new Pelicula();
 
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+    
     public Socio getSocio() {
         return socio;
     }

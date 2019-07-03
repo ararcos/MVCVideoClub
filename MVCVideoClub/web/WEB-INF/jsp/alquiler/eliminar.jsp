@@ -30,6 +30,7 @@
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-6">
                                     <div class="card-body ">
+                                        <h4>Esta Seguro de eliminar este elemento ? </h4>
                                         <form method="POST" class="form-horizontal form-label-left input_mask">
                                             <h4>DATOS SOCIO</h4>
                                             <br>
@@ -66,17 +67,13 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Pelicula</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <select name="pelId" class="form-control mr-3 col-sm-6" id="pelId" >
-                                                        <c:forEach var = "pel" items="${pelicula}">
-                                                            <option value="${pel.PEL_ID}"<c:if test="${alquiler.pelId==pel.PEL_ID}">selected</c:if> >${pel.PEL_NOMBRE}</option>
-                                                        </c:forEach>
-                                                    </select>
+                                                    <label class="form-control" name="pelId" >${alquiler.pelicula.nombre}</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Precio</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="number" name="valor" id="costo"  min="0" step="0.01" class="form-control has-feedback-right" value="${alquiler.valor}" readonly>
+                                                    <label class="form-control has-feedback-right" name="valor" >${alquiler.valor}</label>
                                                     <span class="fa fa-dollar form-control-feedback right" aria-hidden="true"></span>
                                                     </select>
                                                 </div>
@@ -84,7 +81,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Fecha Alquiler</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="Date" name="fechaDesde" id="fechaDesde" class="form-control has-feedback-left" value="${alquiler.fechaDesde}" >
+                                                    <label class="form-control has-feedback-left" name="socio.valor" >${alquiler.fechaDesde}</label>
                                                     <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
                                                     </select>
                                                 </div>
@@ -92,7 +89,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Fecha Hasta</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="Date" name="fechaHasta" id="fechaHasta" class="form-control has-feedback-left" value="${alquiler.fechaHasta}" >
+                                                    <label class="form-control has-feedback-left" name="socio.valor" >${alquiler.fechaHasta}</label>
                                                     <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
                                                     </select>
                                                 </div>
@@ -100,7 +97,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Fecha Entrega</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="Date" name="fechaEntrega" id="fechaHasta" class="form-control has-feedback-left" value="${alquiler.fechaEntrega}" >
+                                                    <label class="form-control has-feedback-left" name="socio.valor" >${alquiler.fechaEntrega}</label>
                                                     <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
                                                     </select>
                                                 </div>
@@ -108,7 +105,7 @@
                                             <br>
                                             <div class="form-group">
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
-                                                    <input type="submit" value="Actualizar" class="btn btn-round btn-success col-md-4">
+                                                    <input type="submit" value="Borrar" class="btn btn-round btn-success col-md-4">
                                                     <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
                                                 </div>
 
@@ -126,22 +123,4 @@
         </div>
     </body>
     <%@include file="../footer.jsp" %>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#pelId').on('change', function () {
-                var id = this.value;
-                $.ajax({
-                    url: 'getCosto.htm?id=' + id,
-                    success: function (data) {
-                        if (data == "error") {
-                            $("#costo").val("")
-                        } else {
-                            $("#costo").val(data)
-                        }
-                    }
-                });
-            })
-        });
-    </script>
 </html>

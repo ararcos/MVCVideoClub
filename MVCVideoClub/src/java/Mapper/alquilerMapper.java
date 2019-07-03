@@ -6,6 +6,7 @@
 package Mapper;
 
 import Models.Alquiler;
+import Models.Pelicula;
 import Models.Socio;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,6 +35,9 @@ public class alquilerMapper implements RowMapper<Alquiler>{
         socio.setDireccion(rs.getString("SOC_DIRECCION"));
         socio.setTelefono(rs.getString("SOC_TELEFONO"));
         alquiler.setSocio(socio);
+        Pelicula pelicula = new Pelicula();
+        pelicula.setNombre(rs.getString("PEL_NOMBRE"));
+        alquiler.setPelicula(pelicula);
         return alquiler;
     }
     

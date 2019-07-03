@@ -40,7 +40,7 @@ public class AlquilerController {
 
     @RequestMapping("/alquiler/index.htm")
     public ModelAndView Listar() {
-        String sql = "SELECT a.*,s.SOC_NOMBRE,p.PEL_NOMBRE FROM alquiler a,socio s,pelicula p WHERE a.SOC_ID=s.SOC_ID AND a.PEL_ID=p.PEL_ID";
+        String sql = "SELECT a.*,s.SOC_NOMBRE,p.PEL_NOMBRE FROM alquiler a,socio s,pelicula p WHERE a.SOC_ID=s.SOC_ID AND a.PEL_ID=p.PEL_ID ORDER BY a.ALQ_ID ASC";
         List datos = this.jdbcTemplate.queryForList(sql);
         mav.addObject("lista", datos);
         mav.setViewName("alquiler/index");
@@ -93,7 +93,20 @@ public class AlquilerController {
         this.jdbcTemplate.update(sql,alquiler.getPelId(),alquiler.getValor(),alquiler.getFechaDesde(),alquiler.getFechaHasta(),alquiler.getFechaEntrega(),alquiler.getId());
      return new ModelAndView("redirect:/alquiler/index.htm");
     }
-     
+     @RequestMapping(value="/alquiler/eliminar.htm", method = RequestMethod.GET )
+    public ModelAndView Eliminar(HttpServletRequest request){
+     id=Integer.parseInt(request.getParameter("id"));
+     Alquiler alquiler=Buscar();
+     mav.addObject("alquiler",alquiler);
+     mav.setViewName("alquiler/eliminar");
+     return mav;
+    }
+    @RequestMapping(value="/alquiler/eliminar.htm", method = RequestMethod.POST )
+    public ModelAndView Eliminar(Alquiler alquiler){
+        String sql="Delete from alquiler WHERE ALQ_ID=?";
+        this.jdbcTemplate.update(sql,id);
+     return new ModelAndView("redirect:/alquiler/index.htm");
+    }
     @RequestMapping("/alquiler/getSocio.htm" )
     public @ResponseBody String getSocio1(HttpServletRequest request){
         String sql = "SELECT * FROM socio WHERE SOC_CEDULA = '"+request.getParameter("cedula")+"'";

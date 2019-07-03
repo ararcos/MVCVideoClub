@@ -18,8 +18,8 @@ public class ReporteMapper implements RowMapper<Reporte>{
      @Override
     public Reporte mapRow(ResultSet rs, int i) throws SQLException {
         Reporte reporte = new Reporte();
-        reporte.setAlquiler(rs.getInt("contador"));
-        reporte.setMes(rs.getString("mes"));
+        reporte.setValores(rs.getInt("valores"));
+        reporte.setLabels(rs.getString("labels"));
         return reporte;
     }
 }

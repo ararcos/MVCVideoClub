@@ -32,6 +32,7 @@ public class PeliculaController {
     Pelicula peli=new Pelicula();
     String ruta;
     int id;
+    int idReparto;
     @RequestMapping("/pelicula/index.htm")
     public ModelAndView Listar(){
     String sql="SELECT p.*,g.GEN_NOMBRE,d.DIR_NOMBRE,f.FOR_NOMBRE FROM pelicula p, "
@@ -187,5 +188,42 @@ public class PeliculaController {
         mav.addObject("actores",datos);
         mav.setViewName("pelicula/reparto");
      return mav;
+    }
+    @RequestMapping(value="/pelicula/eliminarReparto.htm", method = RequestMethod.GET )
+    public ModelAndView EliminarReparto(HttpServletRequest request){
+     idReparto=Integer.parseInt(request.getParameter("id"));
+     String sql="SELECT ap.*,a.ACT_NOMBRE,p.PEL_NOMBRE FROM actor_pelicula ap, actor a, pelicula p WHERE ap.ACT_ID=a.ACT_ID AND ap.PEL_ID = p.PEL_ID AND APL_ID="+idReparto;
+        System.out.println(sql);
+     List datos = this.jdbcTemplate.queryForList(sql);
+     mav.addObject("actorPelicula",datos);
+     mav.setViewName("actorPelicula/eliminar");
+     return mav;
+    }
+    @RequestMapping(value="/pelicula/eliminarReparto.htm", method = RequestMethod.POST )
+    public ModelAndView EliminarReparto(ActorPelicula actorPelicula){
+        String sql="Delete from actor_pelicula WHERE APL_ID=?";
+        this.jdbcTemplate.update(sql,idReparto);
+     return new ModelAndView("redirect:/pelicula/reparto.htm?id="+id);
+    }
+    @RequestMapping(value="/pelicula/editarReparto.htm", method = RequestMethod.GET )
+    public ModelAndView EditarReparto(HttpServletRequest request){
+     String sql="SELECT * FROM actor ";
+     List actor = this.jdbcTemplate.queryForList(sql);
+     mav.addObject("actor",actor);
+     String sql1="SELECT * FROM pelicula ";
+     List pelicula = this.jdbcTemplate.queryForList(sql1);
+     mav.addObject("pelicula",pelicula);
+     idReparto=Integer.parseInt(request.getParameter("id"));
+     String sql2="SELECT ap.*,a.ACT_NOMBRE,p.PEL_NOMBRE FROM actor_pelicula ap, actor a, pelicula p WHERE ap.ACT_ID=a.ACT_ID AND ap.PEL_ID = p.PEL_ID AND APL_ID="+idReparto;
+     List actorPelicula = this.jdbcTemplate.queryForList(sql2);
+     mav.addObject("actorPelicula",actorPelicula);
+     mav.setViewName("actorPelicula/editar");
+     return mav;
+    }
+    @RequestMapping(value="/pelicula/editarReparto.htm", method = RequestMethod.POST )
+    public ModelAndView EditarReparto(ActorPelicula actorPelicula){
+        String sql="update actor_pelicula set APL_PAPEL=?,PEL_ID=?,ACT_ID=? WHERE APL_ID=?";
+        this.jdbcTemplate.update(sql,actorPelicula.getPapel(),actorPelicula.getPelId(),actorPelicula.getActId(),idReparto);
+      return new ModelAndView("redirect:/pelicula/reparto.htm?id="+id);
     }
 }

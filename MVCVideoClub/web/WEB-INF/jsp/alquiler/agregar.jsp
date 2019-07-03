@@ -14,8 +14,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>NUEVO ALQUILER</h3>
                     </div>
                 </div>
 
@@ -28,66 +27,90 @@
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-6">
                                     <div class="card border-info">
-                                        <div class="card-header bg-info text-white">
-                                            <center><h4>AGREGAR ALQUILER</h4></center>
-                                            
-                                        </div>  
                                     </div>
                                     <div class="card-body ">
-                                        <form method="POST" >
+                                        <form method="POST" class="form-horizontal form-label-left input_mask" >
                                             <h4>DATOS SOCIO</h4>
                                             <br>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">Cedula</label>
-                                                <input type="text" name="socio.cedula" id="cedula" class="form-control col-sm-3">
-                                                <a class="btn btn-outline-light   ml-3 col-sm-1" id="buscarSocio"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
-                                                <label  id="error" class="text-danger col-sm-4" hidden></label>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Cedula</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <input type="text" name="socio.cedula" id="cedula" class="form-control  has-feedback-left" required="required">
+                                                    <span class="fa fa-credit-card form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                                <div class="col-md-6 col-sm-5 col-xs-3 form-group has-feedback">
+                                                    <a class="btn btn-outline-light" id="buscarSocio"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
+                                                    <label  id="error" class="text-danger" hidden></label>
+                                                </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <input class="form-control col-sm-2" id="idSocio" name="socId" value="0" Hidden>
+
+                                            <div class="form-group">
+                                                <input class=" col-sm-2" id="idSocio" name="socId" value="0" hidden>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">NOMBRE</label>
-                                                <input class="form-control col-sm-4" name="socio.nombre" id="nomSocio" readonly>
-                                                <label class="col-sm-2">TELEFONO</label>
-                                                <input class="form-control col-sm-4" name="socio.telefono" id="telSocio" readonly >
+                                            <div class="form-group">
+                                                <div class="col-md-1 col-sm-1 col-xs-0"></div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <input class="form-control has-feedback-left" required="required" name="socio.nombre" id="nomSocio" readonly>
+                                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                                <div class="ml-7 col-md-4 col-sm-4 col-xs-12">
+                                                    <input class="form-control has-feedback-right" name="socio.telefono" id="telSocio" readonly required="required">
+                                                    <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
 
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">Corrreo</label>
-                                                <input class="form-control col-sm-4" name="socio.correo" id="corrSocio" readonly >
-                                                <label class="col-sm-2">DIRECCION</label>
-                                                <input class="form-control col-sm-4" name="socio.direccion" id="direSocio" readonly >
-
+                                            <div class="form-group">
+                                                <div class="col-md-1 col-sm-1 col-xs-0"></div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <input class="form-control has-feedback-left" name="socio.correo" id="corrSocio" readonly required="required">
+                                                    <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <input class="form-control has-feedback-right" name="socio.direccion" id="direSocio" readonly required="required">
+                                                    <span class="fa fa-home form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
                                             </div>
                                             <br>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">PELICULA</label>
-                                                <select name="pelId" class="form-control mr-3 col-sm-6" id="pelId" >
-                                                    <option value="1" >------SELECCIONA-----</option>
-                                                    <c:forEach var = "pel" items="${pelicula}">
-                                                        <option value="${pel.PEL_ID}" >${pel.PEL_NOMBRE}</option>
-                                                    </c:forEach>
-                                                </select>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Pelicula</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <select name="pelId" class="form-control mr-3 col-sm-6" id="pelId" required="required">
+                                                        <option value="0" >------SELECCIONA-----</option>
+                                                        <c:forEach var = "pel" items="${pelicula}">
+                                                            <option value="${pel.PEL_ID}" >${pel.PEL_NOMBRE}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Precio</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <input type="number" name="valor" id="costo"  min="0" step="0.01" class="form-control has-feedback-right" value="0" readonly>
+                                                    <span class="fa fa-dollar form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">FECHA ALQUILER</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <input type="Date" name="fechaDesde" class="form-control has-feedback-left" id="fechaDesde">
+                                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
 
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">FECHA ENTREGA</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <input type="Date" name="fechaHasta" id="fechaHasta" class="form-control form-control has-feedback-left" required="required">
+                                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">COSTO</label>
-                                                <input type="number" name="valor" id="costo"  min="0" step="0.01" class="form-control col-sm-6" value="0" readonly>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">FECHA ALQUILER</label>
-                                                <input type="Date" name="fechaDesde" id="fechaDesde" class="form-control col-sm-6" >
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">FECHA ENTREGA</label>
-                                                <input type="Date" name="fechaHasta" id="fechaHasta" class="form-control col-sm-6" >
-                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                    <input type="submit" value="Guardar" class="btn btn-round btn-success col-md-4">
+                                                    <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                </div>
 
-                                            <div class="ml-1 form-group row">
-                                                <input type="submit" value="Guardar" class="btn btn-outline-success mt-5 col-sm-4">
-                                                <div class="col-sm-3"></div>
-                                                <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
 
                                             </div>
 
@@ -155,7 +178,7 @@
                     url: 'getCosto.htm?id=' + id,
                     success: function (data) {
                         if (data == "error") {
-                            $("#costo").val("")
+                            $("#costo").val("0")
                         } else {
                             $("#costo").val(data)
                         }

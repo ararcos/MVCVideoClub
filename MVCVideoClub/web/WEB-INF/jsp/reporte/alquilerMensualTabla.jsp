@@ -16,7 +16,7 @@
                 <div class="page-title">
                     <div class="title_left">
 
-                        <h3>REGISTROS DE ALQUILER</h3>
+                        <h3>Reporte de Alquiler por Fecha</h3>
                     </div>
                 </div>
 
@@ -29,45 +29,45 @@
                             <div class="x_content">
                                 <div class="container mt-4">
                                     <div class="card border-info">
-                                        <a href="agregar.htm" class="btn btn-round btn-primary">Nuevo Registro</a>   
+                                        <form method="POST" >
+                                            
+                                            <div class="row">
+                                                <label class="col-sm-2">DESDE</label>
+                                                <input type="Date" name="desde" class="form-control col-sm-6" >
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-sm-2">HASTA</label>
+                                                <input type="Date" name="hasta" class="form-control col-sm-6" >
+                                            </div>
+                                                    <br>
+                                                <input type="submit" value="Buscar" class="btn btn-outline-success ml-5 col-sm-3">
+
+                                        </form>
                                         <div class="card-body">
+                                            <c:if test="${datos!=null}">
+                                             <a href="" class="btn btn-primary">IMPRIMIR</a>   
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
+                                                        <th>FECHA</th>
                                                         <th>SOCIO</th>
                                                         <th>PELICULA</th>
-                                                        <th>FECHA DESDE</th>
-                                                        <th>FECHA HASTA</th>
                                                         <th>VALOR</th>
-                                                        <th>FECHA ENTREGA</th>
-                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var = "dato" items="${lista}">   
+                                                    <c:forEach var = "dato" items="${datos}">   
                                                         <tr>
-                                                            <td>${dato.ALQ_ID}</td>
-                                                            <td>${dato.SOC_NOMBRE}</td>
-                                                            <td>${dato.PEL_NOMBRE}</td>
-                                                            <td>${dato.ALQ_FECHA_DESDE}</td>
-                                                            <td>${dato.ALQ_FECHA_HASTA}</td>
-                                                            <td>${dato.ALQ_VALOR}</td>
-                                                            <td>${dato.ALQ_FECHA_ENTREGA}</td>
-                                                            <td>
-                                                                <a href="editar.htm?id=${dato.ALQ_ID}" class="btn btn-round btn-warning">Editar</a>
-                                                                <a href="eliminar.htm?id=${dato.ALQ_ID}" class="btn btn-round btn-warning">Eliminar</a>
-
-                                                                <c:if test="${dato.ALQ_FECHA_ENTREGA == null}"><a href="entregar.htm?id=${dato.ALQ_ID}" class="btn btn-round btn-danger" id="entregar">Entregar</a></c:if>
-
-
-                                                                </td>
-
+                                                            <td>${dato.desde}</td>
+                                                            <td>${dato.nombre}</td>
+                                                            <td>${dato.pelicula}</td>
+                                                            <td>${dato.valor}</td>
                                                             </tr>
                                                     </c:forEach>
                                                 </tbody>
                                             </table>
-
+   
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>

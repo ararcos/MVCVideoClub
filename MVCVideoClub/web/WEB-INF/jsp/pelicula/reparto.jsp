@@ -13,8 +13,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>Reparto de ${actor.pelicula.nombre}</h3>
                     </div>
                 </div>
 
@@ -27,33 +26,40 @@
                             <div class="x_content">
                                 <div class="container mt-4">
                                     <div class="card border-info">
-                                        <div class="card-header bg-info text-white">
-                                            <h4>Reparto de ${actor.pelicula.nombre}</h4>
-                                        </div>
                                         <div class="card-body">
-                                            <form method="POST">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-1">ACTOR</label>
-
+                                            <form method="POST" class="form-horizontal form-label-left input_mask">
+                                                <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Actor</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
                                                     <select name="actId" class="form-control col-sm-4" >
                                                         <c:forEach var = "act" items="${listActor}">
                                                             <option value="${act.ACT_ID}" >${act.ACT_NOMBRE}</option>
                                                         </c:forEach>
                                                     </select>
-
+                                                </div>
+                                                
+                                            </div>
+                                                <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Papel</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <input type="text" name="papel" class="form-control has-feedback-left">
+                                                    <span class="fa fa-book form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                                
+                                            </div>
+                                                <br>
+                                                <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                    <input type="submit" value="Añadir" class="btn btn-round btn-success col-md-4">
+                                                    <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
                                                 </div>
 
-                                                <div class="form-group row">
-                                                    <label class="col-sm-1">PAPEL</label>
-                                                    <input type="text" name="papel" class="form-control col-sm-4">
-                                                </div>
-                                                <div class="ml-1 form-group row">
-                                                    <input type="submit" value="AÑADIR" class="btn btn-outline-success col-sm-3 mr-3">
-                                                    <a href="index.htm" class="btn btn-outline-warning  col-sm-3">Regresar</a>
 
-                                                </div>
+                                            </div>
 
                                             </form>
+                                            <br>
+<br>
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
@@ -70,9 +76,8 @@
                                                             <td>${dato.ACT_NOMBRE}</td>
                                                             <td>${dato.APL_PAPEL}</td>
                                                             <td>
-                                                                <a href="editarReparto.htm?id=${dato.PEL_ID}" class="btn btn-warning">Editar</a>
-                                                                <a href="eliminarReparto.htm?id=${dato.PEL_ID}" class="btn btn-warning">Eliminar</a>
-
+                                                                <a href="editarReparto.htm?id=${dato.APL_ID}" class="btn btn-warning">Editar</a>
+                                                                <a href="eliminarReparto.htm?id=${dato.APL_ID}" class="btn btn-warning">Eliminar</a>
                                                             </td>
 
                                                         </tr>
