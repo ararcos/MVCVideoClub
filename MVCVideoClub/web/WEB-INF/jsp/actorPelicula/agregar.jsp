@@ -20,9 +20,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
-                    </div>
+                        <h3>NUEVO ACTOR</h3>
+                    </div
                 </div>
 
                 <div class="clearfix"></div>
@@ -34,33 +33,49 @@
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-5" >
                                     <div class="card border-info">
-                                        <div class="card-header bg-info">
-                                            <h4>Agregar Actor Pelicula</h4>
-                                        </div>
                                         <div class="card-body">
-                                            <form method="POST">
-                                                <label>ACTOR</label>
-                                                <div class="ml-1 form-group row">
-                                                    <select name="actId" class="form-control mr-3 col-sm-10" >
-                                                        <c:forEach var = "act" items="${actor}">
-                                                            <option value="${act.ACT_ID}" >${act.ACT_NOMBRE}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    <a href="guardarActor.htm?ruta=/actorPelicula/agregar.htm" class="btn btn-outline-danger ml-4 col-sm-0">+</a>
+                                            <form method="POST" class="form-horizontal form-label-left input_mask" >
+                                                <h4>DATOS ACTOR</h4>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Actor</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <select name="actId" class="form-control mr-3 col-sm-6" id="actId" required="required">
+                                                            <option value="0" >------SELECCIONA-----</option>
+                                                            <c:forEach var = "act" items="${actor}">
+                                                                <option value="${act.ACT_ID}" >${act.ACT_NOMBRE}</option>
+
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <label>PELICULA</label>
-                                                <div class="ml-1 form-group row">
-                                                    <select name="pelId" class="form-control mr-3 col-sm-10" >
-                                                        <c:forEach var = "pel" items="${pelicula}">
-                                                            <option value="${pel.PEL_ID}" >${pel.PEL_NOMBRE}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    <a href="guardarPelicula.htm?ruta=/actorPelicula/agregar.htm" class="btn btn-outline-danger ml-4 col-sm-0">+</a>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Pelicula</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <select name="pelId" class="form-control mr-3 col-sm-6" id="pelId" required="required">
+                                                            <option value="0" >------SELECCIONA-----</option>
+                                                            <c:forEach var = "pel" items="${pelicula}">
+                                                                <option value="${pel.PEL_ID}" >${pel.PEL_NOMBRE}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <label>PAPEL</label>
-                                                <input type="text" name="papel" class="form-control">
-                                                <input type="submit" value="Agregar" class="btn btn-success">
-                                                <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Papel</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <input type="text" name="papel" id="cedula" class="form-control  has-feedback-left" required="required">
+                                                        <span class="fa fa-star form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                        <input type="submit" value="Guardar" class="btn btn-round btn-success col-md-4">
+                                                        <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                    </div>
+
+
+                                                </div>
 
                                             </form>
                                         </div>

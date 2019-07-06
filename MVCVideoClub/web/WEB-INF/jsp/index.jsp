@@ -14,8 +14,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                  <center/>
-                <h3>ALQUILER DE PELICULAS</h3>
+                <h3>Video Club</h3>
               </div>
             </div>
 
@@ -26,7 +25,7 @@
                 <div class="x_panel">
                   
                   <div class="x_content">
-                      Add content to the page ...
+                      <h2>Bienvenido</h2>
                   </div>
                 </div>
               </div>

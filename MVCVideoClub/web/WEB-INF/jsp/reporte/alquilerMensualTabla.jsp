@@ -29,44 +29,59 @@
                             <div class="x_content">
                                 <div class="container mt-4">
                                     <div class="card border-info">
-                                        <form method="POST" >
-                                            
-                                            <div class="row">
-                                                <label class="col-sm-2">DESDE</label>
-                                                <input type="Date" name="desde" class="form-control col-sm-6" >
+                                        <form method="POST" class="form-horizontal form-label-left input_mask" >
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">DESDE</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <input type="Date" name="desde" class="form-control  has-feedback-left" required="required" >
+
+                                                    <span class="fa fa-search form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <label class="col-sm-2">HASTA</label>
-                                                <input type="Date" name="hasta" class="form-control col-sm-6" >
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">HASTA</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <input type="Date" name="hasta" class="form-control  has-feedback-left" required="required"  >
+
+                                                    <span class="fa fa-search form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
                                             </div>
-                                                    <br>
-                                                <input type="submit" value="Buscar" class="btn btn-outline-success ml-5 col-sm-3">
+
+                                            <br>
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                    <input type="submit" value="Buscar" class="btn btn-round btn-success col-md-4">
+                                                </div>
+
+
+                                            </div>
 
                                         </form>
                                         <div class="card-body">
                                             <c:if test="${datos!=null}">
-                                             <a href="" class="btn btn-primary">IMPRIMIR</a>   
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>FECHA</th>
-                                                        <th>SOCIO</th>
-                                                        <th>PELICULA</th>
-                                                        <th>VALOR</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var = "dato" items="${datos}">   
+                                                <a href="" class="btn btn-primary">IMPRIMIR</a>   
+                                                <table class="table table-hover">
+                                                    <thead>
                                                         <tr>
-                                                            <td>${dato.desde}</td>
-                                                            <td>${dato.nombre}</td>
-                                                            <td>${dato.pelicula}</td>
-                                                            <td>${dato.valor}</td>
+                                                            <th>FECHA</th>
+                                                            <th>SOCIO</th>
+                                                            <th>PELICULA</th>
+                                                            <th>VALOR</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <c:forEach var = "dato" items="${datos}">   
+                                                            <tr>
+                                                                <td>${dato.desde}</td>
+                                                                <td>${dato.nombre}</td>
+                                                                <td>${dato.pelicula}</td>
+                                                                <td>${dato.valor}</td>
                                                             </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-   
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </table>
+
                                             </c:if>
                                         </div>
                                     </div>

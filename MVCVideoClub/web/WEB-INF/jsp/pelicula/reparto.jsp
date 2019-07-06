@@ -50,7 +50,7 @@
                                                 <br>
                                                 <div class="form-group">
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
-                                                    <input type="submit" value="Añadir" class="btn btn-round btn-success col-md-4">
+                                                    <input type="submit" value="Añadir" class="btn btn-round btn-success col-md-4"  required="required">
                                                     <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
                                                 </div>
 

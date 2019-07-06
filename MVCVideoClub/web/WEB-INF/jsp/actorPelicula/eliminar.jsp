@@ -19,8 +19,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>ELIMINAR ACTUACION EN PELICULA</h3>
                     </div>
                 </div>
 
@@ -33,24 +32,47 @@
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-4" >
                                     <div class="card border-info">
-                                        <div class="card-header bg-info">
-                                            <h4>Esta Seguro de eliminar este elemento ?</h4>
-                                        </div>
+                                        <h4>Esta Seguro de eliminar este elemento ? </h4>
                                         <div class="card-body">
-                                            <form method="POST">
-                                                <label>ID</label>
-                                                <label class="form-control">${actorPelicula[0].APL_ID}</label>
-                                                <label>ACTOR</label>
-                                                <label class="form-control">${actorPelicula[0].ACT_NOMBRE}</label>
-                                                <label>PELICULA</label>
-                                                <label class="form-control">${actorPelicula[0].PEL_NOMBRE}</label>
-                                                <label>PAPEL</label>
-                                                <label class="form-control">${actorPelicula[0].APL_PAPEL}</label>
+                                            <form method="POST" class="form-horizontal form-label-left input_mask">
+                                                <h4>DATOS ACTOR</h4>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">ID</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label class="form-control has-feedback-left">${actorPelicula[0].APL_ID}</label>
+                                                        <span class="fa fa-registered form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Actor</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label class="form-control has-feedback-left">${actorPelicula[0].ACT_NOMBRE}</label>
+                                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Pelicula</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label class="form-control has-feedback-left">${actorPelicula[0].PEL_NOMBRE}</label>
+                                                        <span class="fa fa-film form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Papel</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label class="form-control has-feedback-left">${actorPelicula[0].APL_PAPEL}</label>
+                                                        <span class="fa fa-archive form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
 
-                                                <div class="ml-1 form-group row">
-                                                    <input type="submit" value="Eliminar" class="btn btn-outline-success mt-3 col-sm-4">
-                                                    <div class="col-sm-3"></div>
-                                                    <a href="index.htm" class="btn btn-outline-warning mt-3 ml-4 col-sm-4">Regresar</a>
+                                                <br>
+                                                <div class="form-group">
+                                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                        <input type="submit" value="Borrar" class="btn btn-round btn-success col-md-4">
+                                                        <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                    </div>
+
 
                                                 </div>
                                             </form>

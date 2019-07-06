@@ -35,7 +35,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Cedula</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="text" name="socio.cedula" id="cedula" class="form-control  has-feedback-left" required="required">
+                                                    <input type="text" name="socio.cedula" id="cedula" class="form-control  has-feedback-left" required="required" maxlength="10">
                                                     <span class="fa fa-credit-card form-control-feedback left" aria-hidden="true"></span>
                                                 </div>
                                                 <div class="col-md-6 col-sm-5 col-xs-3 form-group has-feedback">

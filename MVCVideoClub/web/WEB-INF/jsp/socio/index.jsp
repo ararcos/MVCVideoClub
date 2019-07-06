@@ -15,8 +15,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>REGISTRAR SOCIO</h3>
+
+                        <h3>REGISTROS DE SOCIOS</h3>
                     </div>
                 </div>
 
@@ -29,9 +29,8 @@
                             <div class="x_content">
                                 <div class="container mt-4">
                                     <div class="card border-info">
-                                        <div class="card-header bg-info text-white">
-                                            <a href="agregar.htm" class="btn btn-primary">Nuevo Registro</a>
-                                        </div>    
+                                        <a href="agregar.htm" class="btn btn-round btn-primary">Nuevo Registro</a>   
+
                                         <div class="card-body">
                                             <table class="table table-hover">
                                                 <thead>
@@ -46,7 +45,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var = "dato" items="${lista}">
+                                                    <c:forEach var = "dato" items="${lista}">   
                                                         <tr>
                                                             <td>${dato.SOC_ID}</td>
                                                             <td>${dato.SOC_CEDULA}</td>
@@ -55,16 +54,15 @@
                                                             <td>${dato.SOC_TELEFONO}</td>
                                                             <td>${dato.SOC_CORREO}</td>
                                                             <td>
-                                                                <a href="editar.htm?id=${dato.SOC_ID}" class="btn btn-warning">Editar</a>
-                                                                <a href="eliminar.htm?id=${dato.SOC_ID}" class="btn btn-danger">Eliminar</a>
-
+                                                                <a href="editar.htm?id=${dato.SOC_ID}" class="btn btn-round btn-warning">Editar</a>
+                                                                <a href="eliminar.htm?id=${dato.SOC_ID}" class="btn btn-round btn-warning">Eliminar</a>
                                                             </td>
 
                                                         </tr>
                                                     </c:forEach>
-
                                                 </tbody>
                                             </table>
+
 
 
                                         </div>

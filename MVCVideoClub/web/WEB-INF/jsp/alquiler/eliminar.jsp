@@ -17,7 +17,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>EDITAR ALQUILER</h3>
+                        <h3>ELIMINAR ALQUILER</h3>
                     </div>
                 </div>
 

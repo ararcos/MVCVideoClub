@@ -84,7 +84,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Fecha Alquiler</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="Date" name="fechaDesde" id="fechaDesde" class="form-control has-feedback-left" value="${alquiler.fechaDesde}" >
+                                                    <input type="Date" name="fechaDesde" id="fechaDesde" class="form-control has-feedback-left" required="required" value="${alquiler.fechaDesde}" >
                                                     <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
                                                     </select>
                                                 </div>
@@ -92,7 +92,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Fecha Hasta</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="Date" name="fechaHasta" id="fechaHasta" class="form-control has-feedback-left" value="${alquiler.fechaHasta}" >
+                                                    <input type="Date" name="fechaHasta" id="fechaHasta" class="form-control has-feedback-left" required="required" value="${alquiler.fechaHasta}" >
                                                     <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
                                                     </select>
                                                 </div>
@@ -100,7 +100,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Fecha Entrega</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="Date" name="fechaEntrega" id="fechaHasta" class="form-control has-feedback-left" value="${alquiler.fechaEntrega}" >
+                                                    <input type="Date" name="fechaEntrega" id="fechaHasta" class="form-control has-feedback-left" required="required" value="${alquiler.fechaEntrega}" >
                                                     <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
                                                     </select>
                                                 </div>

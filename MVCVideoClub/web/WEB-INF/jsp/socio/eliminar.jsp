@@ -18,8 +18,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>ELIMINAR SOCIO</h3>
                     </div>
                 </div>
 
@@ -32,25 +31,53 @@
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-4" >
                                     <div class="card border-info">
-                                        <div class="card-header bg-info">
-                                            <h4>Esta Seguro de eliminar este elemento ?</h4>
-                                        </div>
+                                        <h4>Esta Seguro de eliminar este elemento ?</h4>
                                         <div class="card-body">
-                                            <form method="POST">
-                                                <label>CEDULA</label>
-                                                <label class="form-control" >${socio[0].SOC_CEDULA}</label>
-                                                <label>NOMBRE</label>
-                                                <label class="form-control">${socio[0].SOC_NOMBRE} </label>
-                                                <label>DIRECCION</label>
-                                                <label class="form-control">${socio[0].SOC_DIRECCION} </label>
-                                                <label>TELEFONO</label>
-                                                <label class="form-control">${socio[0].SOC_TELEFONO} </label>
-                                                <label>CORREO</label>
-                                                <label class="form-control">${socio[0].SOC_CORREO} </label>
-                                                <div class="ml-1 form-group row">
-                                                    <input type="submit" value="Eliminar" class="btn btn-outline-success mt-5 col-sm-4">
-                                                    <div class="col-sm-3"></div>
-                                                    <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
+                                            <form method="POST" class="form-horizontal form-label-left input_mask">
+                                                <h4>DATOS SOCIO</h4>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Cedula</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label name="cedula" class="form-control has-feedback-left">${socio[0].SOC_CEDULA}</label>
+                                                        <span class="fa fa-credit-card form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label name="nombre" class="form-control has-feedback-left">${socio[0].SOC_NOMBRE}</label>
+                                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Direccion</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label name="direccion" class="form-control has-feedback-left">${socio[0].SOC_DIRECCION}</label>
+                                                        <span class="fa fa-map form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Telefono</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label name="telefono" class="form-control has-feedback-left">${socio[0].SOC_TELEFONO}</label>
+                                                        <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Correo</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <label name="correo" class="form-control has-feedback-left">${socio[0].SOC_CEDULA}</label>
+                                                        <span class="fa fa-mail-reply form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group">
+                                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                        <input type="submit" value="Borrar" class="btn btn-round btn-success col-md-4">
+                                                        <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                    </div>
+
 
                                                 </div>
                                             </form>

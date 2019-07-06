@@ -16,8 +16,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>REGISTRAR SEXO</h3>
+
+                        <h3>REGISTAR SEXO</h3>
                     </div>
                 </div>
 
@@ -30,9 +30,8 @@
                             <div class="x_content">
                                 <div class="container mt-4">
                                     <div class="card border-info">
-                                        <div class="card-header bg-info text-white">
-                                            <a href="agregar.htm" class="btn btn-primary">Nuevo Registro</a>
-                                        </div>    
+                                        <a href="agregar.htm" class="btn btn-round btn-primary">Nuevo Registro</a>   
+
                                         <div class="card-body">
                                             <table class="table table-hover">
                                                 <thead>
@@ -43,21 +42,21 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var = "dato" items="${lista}">
+                                                    <c:forEach var = "dato" items="${lista}">   
                                                         <tr>
                                                             <td>${dato.SEX_ID}</td>
                                                             <td>${dato.SEX_NOMBRE}</td>
                                                             <td>
-                                                                <a href="editar.htm?id=${dato.SEX_ID}" class="btn btn-warning">Editar</a>
-                                                                <a href="eliminar.htm?id=${dato.SEX_ID}" class="btn btn-warning">Eliminar</a>
+                                                                <a href="editar.htm?id=${dato.SEX_ID}" class="btn btn-round btn-warning">Editar</a>
+                                                                <a href="eliminar.htm?id=${dato.SEX_ID}" class="btn btn-round btn-warning">Eliminar</a>
 
                                                             </td>
 
                                                         </tr>
                                                     </c:forEach>
-
                                                 </tbody>
                                             </table>
+
 
                                         </div>
                                     </div>

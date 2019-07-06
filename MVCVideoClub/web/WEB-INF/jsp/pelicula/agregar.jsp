@@ -80,7 +80,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">Precio</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-9">
-                                                    <input type="number" name="costo"  min="0" step="0.01" class="form-control has-feedback-left" required="required">
+                                                    <input type="number" name="costo"  min="0" step="0.01" max="1000" class="form-control has-feedback-left" required="required">
                                                     <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
                                                 </div>
                                                 

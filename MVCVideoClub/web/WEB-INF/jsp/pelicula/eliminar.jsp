@@ -17,9 +17,8 @@
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
-                    <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                    <div class="title_left"> 
+                        <h3>ELIMINAR PELICULA</h3>
                     </div>
                 </div>
 
@@ -31,32 +30,71 @@
 
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-5">
-                                    <div class="card border-info">
-                                        <div class="card-header bg-danger text-white">
-                                            <h4>ELIMINAR PELICULA</h4>
-                                        </div>  
-                                    </div>
                                     <div class="card-body ">
                                         <h4>Esta Seguro de eliminar este elemento ? </h4>
-                                        <form method="POST">
-                                            <label>ID</label>
-                                            <label class="form-control">${pelicula[0].PEL_ID}</label>
-                                            <label>NOMBRE</label>
-                                            <label class="form-control">${pelicula[0].PEL_NOMBRE}</label>
-                                            <label>GENERO</label>
-                                            <label class="form-control">${pelicula[0].GEN_NOMBRE}</label>
-                                            <label>DIRECTOR</label>
-                                            <label class="form-control">${pelicula[0].DIR_NOMBRE}</label>
-                                            <label>FORMATO</label>
-                                            <label class="form-control">${pelicula[0].FOR_NOMBRE}</label>
-                                            <label>COSTO</label>
-                                            <label class="form-control">${pelicula[0].PEL_COSTO}</label>
-                                            <label>FECHA ESTRENO</label>
-                                            <label class="form-control">${pelicula[0].PEL_FECHA_ESTRENO}</label>
-                                            <div class="ml-1 form-group row">
-                                                <input type="submit" value="Eliminar" class="btn btn-outline-success mt-3 col-sm-4">
-                                                <div class="col-sm-3"></div>
-                                                <a href="index.htm" class="btn btn-outline-warning mt-3 ml-4 col-sm-4">Regresar</a>
+                                        <form method="POST" class="form-horizontal form-label-left input_mask">
+                                            <h4>DATOS PELICULA</h4>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">ID</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${pelicula[0].PEL_ID}</label>
+                                                    <span class="fa fa-user-secret form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${pelicula[0].PEL_NOMBRE}</label>
+                                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Genero</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${pelicula[0].GEN_NOMBRE}</label>
+                                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Ddirector</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${pelicula[0].DIR_NOMBRE}</label>
+                                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Formato</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${pelicula[0].FOR_NOMBRE}</label>
+                                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Costo</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${pelicula[0].PEL_COSTO}</label>
+                                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Fecha Estreno</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${pelicula[0].PEL_FECHA_ESTRENO}</label>
+                                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                    <input type="submit" value="Borrar" class="btn btn-round btn-success col-md-4">
+                                                    <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                </div>
+
 
                                             </div>
                                         </form>

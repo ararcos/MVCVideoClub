@@ -13,8 +13,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>ELIMINAR SEXO</h3>
                     </div>
                 </div>
 
@@ -33,18 +32,32 @@
                                     </div>
                                     <div class="card-body ">
                                         <h4>Esta Seguro de eliminar este elemento ? </h4>
-                                        <form method="POST">
-                                            <label>ID</label>
-                                            <label class="form-control">${sexo[0].SEX_ID}</label>
-                                            <label>NOMBRE</label>
-                                            <label class="form-control">${sexo[0].SEX_NOMBRE}</label>
+                                       <form method="POST" class="form-horizontal form-label-left input_mask">
+                                            <h4>DATOS SEXO</h4>
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">ID</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${sexo[0].SEX_ID}</label>
+                                                    <span class="fa fa-credit-card form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                                    <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <label name="socio.cedula" class="form-control has-feedback-left">${sexo[0].SEX_NOMBRE}</label>
+                                                    <span class="fa fa-credit-card form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                    <input type="submit" value="Borrar" class="btn btn-round btn-success col-md-4">
+                                                    <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                </div>
 
-                                            <div class="ml-1 form-group row">
-                                                <input type="submit" value="Eliminar" class="btn btn-outline-success mt-5 col-sm-4">
-                                                <div class="col-sm-3"></div>
-                                                <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
 
                                             </div>
+
                                         </form>
                                     </div>
                                 </div>

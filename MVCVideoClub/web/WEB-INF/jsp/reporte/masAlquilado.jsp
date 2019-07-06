@@ -26,34 +26,49 @@
 
                             <div class="x_content">
                                 <div class="chart-container">
-                                    <form method="POST" >
-                                            <label  id="error" class="text-danger h6"> Ingrese el año que quiere consultar los alquileres </label>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2">Año</label>
-                                            <select class="form-control" name="mes">
-                                                <option value="1">ENERO</option>
-                                                <option value="2">FEBRERO</option>
-                                                <option value="3">MARZO</option>
-                                                <option value="4">ABRIL</option>
-                                                <option value="5">MAYO</option>
-                                                <option value="6">JUNIO</option>
-                                                <option value="7">JULIO</option>
-                                                <option value="8">AGOSTO</option>
-                                                <option value="9">SEPTIEMBRE</option>
-                                                <option value="10">OCTUBRE</option>
-                                                <option value="11">NOVIEMBRE</option>
-                                                <option value="12">DICIEMBRE</option>
+                                    <form method="POST" class="form-horizontal form-label-left input_mask" >
+                                        <div class="form-group">
+                                             <label  id="error" class="text-danger h6"> Escoja el mes que quiere consultar los alquileres </label>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <select name="mes" class="form-control mr-3 col-sm-6" id="mes" required="required">
+                                                    <option value="0" >------SELECCIONA-----</option>
+                                                    <c:forEach var = "mes" items="mes">
+                                                        <option ect class="form-control" name="mes">
+                                                        <option value="1">ENERO</option>
+                                                        <option value="2">FEBRERO</option>
+                                                        <option value="3">MARZO</option>
+                                                        <option value="4">ABRIL</option>
+                                                        <option value="5">MAYO</option>
+                                                        <option value="6">JUNIO</option>
+                                                        <option value="7">JULIO</option>
+                                                        <option value="8">AGOSTO</option>
+                                                        <option value="9">SEPTIEMBRE</option>
+                                                        <option value="10">OCTUBRE</option>
+                                                        <option value="11">NOVIEMBRE</option>
+                                                        <option value="12">DICIEMBRE</option></option>
+                                                    </c:forEach>
+                                                </select>
+                                               
                                                 
-                                            </select>
-                                            
-                                            <input type="submit" class="btn btn-outline-warning col-sm-1" value="buscar">
+                                            </div>
+                                                                                            <br>
+                                                
                                         </div>
-                                        
+                                        <div class="form-group">
+                                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                        <input type="submit" value="Generar" class="btn btn-round btn-success col-md-4">
+                                                        
+                                                    </div>
+                                                </div> 
+                                        <label  id="error" class="text-danger h6"> </label>
+
+
+
                                     </form>
                                     <c:if test="${datos!=null}">
                                         <canvas id="myChart" height="20vh" width="60vw"></canvas
-                                           
-                                        </c:if>
+
+                                    </c:if>
 
                                 </div>
                             </div>
@@ -65,10 +80,10 @@
 
 
     </body>
-    
+
     <%@include file="../footer.jsp" %>
     <script>
-       
+
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -78,9 +93,9 @@
             data: {
                 labels: ${labels},
                 datasets: [{
-                        backgroundColor: ["#42cef5","#8d42f5","#b528bd","#d64b79","#eff21d","#34ab24"],
+                        backgroundColor: ["#42cef5", "#8d42f5", "#b528bd", "#d64b79", "#eff21d", "#34ab24"],
                         data:${valores}
-                            
+
                     }]
             },
 

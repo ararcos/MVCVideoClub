@@ -5,6 +5,9 @@
  */
 package Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author alexa
@@ -19,7 +22,16 @@ public class Alquiler {
     private String fechaEntrega;
     private Socio socio=new Socio();
     private Pelicula pelicula = new Pelicula();
+    private List<Pelicula> lislPeliculas = new ArrayList<Pelicula>();
 
+    public List<Pelicula> getLislPeliculas() {
+        return lislPeliculas;
+    }
+
+    public void setLislPeliculas(List<Pelicula> lislPeliculas) {
+        this.lislPeliculas = lislPeliculas;
+    }
+    
     public Pelicula getPelicula() {
         return pelicula;
     }

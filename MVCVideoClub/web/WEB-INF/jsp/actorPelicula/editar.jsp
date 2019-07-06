@@ -20,8 +20,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>EDITAR ACTOR</h3>
                     </div>
                 </div>
 
@@ -34,34 +33,49 @@
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-5" >
                                     <div class="card border-info">
-                                        <div class="card-header bg-info">
-                                            <h4>Actualizar Registro</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <form method="POST">
-                                                <label>ACTOR</label>
-                                                <div class="ml-1 form-group row">
-                                                    <select name="actId" class="form-control mr-3 col-sm-10" >
-                                                        <c:forEach var = "act" items="${actor}">
-                                                            <option value="${act.ACT_ID}" <c:if test="${actorPelicula[0].ACT_ID==act.ACT_ID}">selected</c:if> >${act.ACT_NOMBRE}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    <a href="guardarActor.htm?ruta=/actorPelicula/editar.htm?id=${actorPelicula[0].APL_ID}" class="btn btn-outline-danger ml-4 col-sm-0">+</a>
-                                                </div>
-                                                <label>PELICULA</label>
-                                                <div class="ml-1 form-group row">
-                                                    <select name="pelId" class="form-control mr-3 col-sm-10" >
-                                                        <c:forEach var = "pel" items="${pelicula}">
-                                                            <option value="${pel.PEL_ID}" <c:if test="${actorPelicula[0].PEL_ID==pel.PEL_ID}">selected</c:if>>${pel.PEL_NOMBRE}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    <a href="guardarPelicula.htm?ruta=/actorPelicula/editar.htm?id=${actorPelicula[0].APL_ID}" class="btn btn-outline-danger ml-4 col-sm-0">+</a>
-                                                </div>
-                                                <label>PAPEL</label>
-                                                <input type="text" name="papel" class="form-control" value="${actorPelicula[0].APL_PAPEL}">
-                                                <input type="submit" value="Actualizar" class="btn btn-success">
-                                                <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
 
+                                        <div class="card-body">
+                                            <form method="POST" class="form-horizontal form-label-left input_mask">
+                                                <h4>DATOS ACTOR</h4>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Actor</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <select name="actId" class="form-control mr-3 col-sm-6" id="actId" >
+                                                            <c:forEach var = "act" items="${actor}">
+                                                                <option value="${act.ACT_ID}" <c:if test="${actorPelicula[0].ACT_ID==act.ACT_ID}">selected</c:if> >${act.ACT_NOMBRE}</option>
+
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Pelicula</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <select name="pelId" class="form-control mr-3 col-sm-6" id="pelId" >
+                                                            <c:forEach var = "pel" items="${pelicula}">
+                                                                <option value="${pel.PEL_ID}" <c:if test="${actorPelicula[0].PEL_ID==pel.PEL_ID}">selected</c:if>>${pel.PEL_NOMBRE}</option>
+
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Papel</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <input type="text" name="papel" class="form-control has-feedback-left"value="${actorPelicula[0].APL_PAPEL}">
+
+                                                        <span class="fa fa-star form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                    <input type="submit" value="Actualizar" class="btn btn-round btn-success col-md-4">
+                                                    <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                </div>
+
+
+                                            </div>
                                             </form>
                                         </div>
                                     </div>

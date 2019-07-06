@@ -26,20 +26,30 @@
 
                             <div class="x_content">
                                 <div class="chart-container">
-                                    <form method="POST" >
-                                            <label  id="error" class="text-danger h6"> Ingrese el año que quiere consultar los alquileres </label>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2">Año</label>
-                                            <input type="text" name="anio" class="form-control col-sm-3">
-                                            
-                                            <input type="submit" class="btn btn-outline-warning col-sm-1" value="buscar">
+                                    <form method="POST" class="form-horizontal form-label-left input_mask" >
+                                        <label  id="error" class="text-danger h6"> Ingrese el año que quiere consultar los alquileres </label>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">AñO</label>
+                                            <div class="col-md-4 col-sm-4 col-xs-9">
+                                                <input type="text" name="anio" class="form-control  has-feedback-left" required="required">
+
+
+                                                <span class="fa fa-search form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
                                         </div>
-                                        
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                <input type="submit" value="Buscar" class="btn btn-round btn-success col-md-4">
+                                            </div>
+
+
+                                        </div>
+
                                     </form>
                                     <c:if test="${datos!=null}">
                                         <canvas id="myChart" height="20vh" width="60vw"></canvas
-                                           
-                                        </c:if>
+
+                                    </c:if>
 
                                 </div>
                             </div>
@@ -51,10 +61,10 @@
 
 
     </body>
-    
+
     <%@include file="../footer.jsp" %>
     <script>
-       
+
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -67,7 +77,7 @@
                         label: 'Alquiler Mensual',
                         borderColor: 'rgb(217, 15, 213)',
                         fill: false,
-                        
+
                         data: ${alquiler}
                     }]
             },

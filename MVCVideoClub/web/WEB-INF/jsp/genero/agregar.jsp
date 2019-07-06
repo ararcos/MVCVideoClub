@@ -18,8 +18,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <center/>
-                        <h3>ALQUILER DE PELICULAS</h3>
+                        <h3>NUEVO GENERO</h3>
                     </div>
                 </div>
 
@@ -32,16 +31,26 @@
                             <div class="x_content">
                                 <div class="container mt-4 col-lg-4" >
                                     <div class="card border-info">
-                                        <div class="card-header bg-info">
-                                            <h4>Agregar Genero</h4>
-                                        </div>
                                         <div class="card-body">
-                                            <form method="POST">
-                                                <label>NOMBRE</label>
-                                                <input type="text" name="nombre" class="form-control">
-                                                <input type="submit" value="Agregar" class="btn btn-success">
-                                                <a href="index.htm" class="btn btn-outline-warning mt-5 ml-4 col-sm-4">Regresar</a>
+                                            <form method="POST" class="form-horizontal form-label-left input_mask" >
+                                                <h4>DATOS GENERO</h4>
+                                                <br>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-9">
+                                                        <input type="text" name="nombre" id="nombre" class="form-control  has-feedback-left" required="required">
+                                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group">
+                                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                                                        <input type="submit" value="Guardar" class="btn btn-round btn-success col-md-4">
+                                                        <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
+                                                    </div>
 
+
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
