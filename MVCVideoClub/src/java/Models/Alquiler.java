@@ -22,15 +22,17 @@ public class Alquiler {
     private String fechaEntrega;
     private Socio socio=new Socio();
     private Pelicula pelicula = new Pelicula();
-    private List<Pelicula> lislPeliculas = new ArrayList<Pelicula>();
+    private ArrayList<Pelicula> listPeliculas = new ArrayList<Pelicula>();
 
-    public List<Pelicula> getLislPeliculas() {
-        return lislPeliculas;
+    public ArrayList<Pelicula> getListPeliculas() {
+        return listPeliculas;
     }
 
-    public void setLislPeliculas(List<Pelicula> lislPeliculas) {
-        this.lislPeliculas = lislPeliculas;
+    public void setListPeliculas(ArrayList<Pelicula> listPeliculas) {
+        this.listPeliculas = listPeliculas;
     }
+
+    
     
     public Pelicula getPelicula() {
         return pelicula;

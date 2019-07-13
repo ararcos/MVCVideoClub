@@ -15,6 +15,7 @@ import Models.Socio;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -60,6 +61,9 @@ public class AlquilerController {
     @RequestMapping(value="/alquiler/agregar.htm", method = RequestMethod.POST )
     public ModelAndView Agregar(Alquiler alquiler){
         System.out.println(alquiler.getSocio().getCedula()+" "+alquiler.getSocio().getNombre());
+        Alquiler newAlquiler = new Alquiler();
+        Predicate<Pelicula> condicion = nuevo -> nuevo.getId() == 0;
+        alquiler.getListPeliculas().removeIf(condicion);
         if (alquiler.getSocId()==0 && alquiler.getSocio().getNombre()!="") {
             String sql="insert into socio(SOC_CEDULA,SOC_NOMBRE,SOC_DIRECCION,SOC_TELEFONO,SOC_CORREO) values(?,?,?,?,?)";
             this.jdbcTemplate.update(sql,alquiler.getSocio().getCedula(),alquiler.getSocio().getNombre(),alquiler.getSocio().getDireccion(),alquiler.getSocio().getTelefono(),alquiler.getSocio().getCorreo());
@@ -67,9 +71,11 @@ public class AlquilerController {
         String sql = "SELECT * FROM socio WHERE SOC_CEDULA = '"+alquiler.getSocio().getCedula()+"'";
         Socio soc =new  Socio();
         soc=this.jdbcTemplate.queryForObject(sql,new socioMapper());
-        String sql1="insert into alquiler(SOC_ID,PEL_ID,ALQ_FECHA_DESDE,ALQ_FECHA_HASTA,ALQ_VALOR) values(?,?,?,?,?)";
-        System.out.println(sql+" "+soc.getId());
-        this.jdbcTemplate.update(sql1,soc.getId(),alquiler.getPelId(),alquiler.getFechaDesde(),alquiler.getFechaHasta(),alquiler.getValor());
+        for (int i = 0; i < alquiler.getListPeliculas().size(); i++) {
+            String sql1="insert into alquiler(SOC_ID,PEL_ID,ALQ_FECHA_DESDE,ALQ_FECHA_HASTA,ALQ_VALOR) values(?,?,?,?,?)";
+        this.jdbcTemplate.update(sql1,soc.getId(),alquiler.getListPeliculas().get(i).getId(),alquiler.getFechaDesde(),alquiler.getFechaHasta(),
+                alquiler.getListPeliculas().get(i).getCosto());
+        }
      return new ModelAndView("redirect:/alquiler/index.htm");
     }
     @RequestMapping(value="/alquiler/editar.htm", method = RequestMethod.GET)
@@ -150,5 +156,17 @@ public class AlquilerController {
          String sql = "SELECT a.*,s.SOC_NOMBRE,s.SOC_TELEFONO,s.SOC_CORREO,s.SOC_DIRECCION,s.SOC_CEDULA,p.PEL_NOMBRE FROM alquiler a,socio s,pelicula p WHERE a.SOC_ID=s.SOC_ID AND a.PEL_ID=p.PEL_ID AND a.ALQ_ID="+id;
          alquiler = this.jdbcTemplate.queryForObject(sql,new alquilerMapper());
         return alquiler;
+    }
+    @RequestMapping("/alquiler/getPelicula.htm" )
+    public @ResponseBody String getPelicula(HttpServletRequest request){
+        String sql = "SELECT * FROM pelicula WHERE PEL_ID = '"+request.getParameter("pelicula")+"'";
+        Pelicula pel =new  Pelicula();
+        try {
+                pel=this.jdbcTemplate.queryForObject(sql,new peliculaMapper());
+                return pel.getId()+","+pel.getNombre()+","+pel.getCosto();
+        } catch (Exception e) {
+        return "error";
+        }
+        
     }
 }

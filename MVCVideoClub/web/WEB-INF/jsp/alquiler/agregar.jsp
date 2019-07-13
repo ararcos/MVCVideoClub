@@ -72,24 +72,6 @@
                                             </div>
                                             <br>
                                             <div class="form-group">
-                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Pelicula</label>
-                                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                                    <select name="pelId" class="form-control mr-3 col-sm-6" id="pelId" required="required">
-                                                        <option value="0" >------SELECCIONA-----</option>
-                                                        <c:forEach var = "pel" items="${pelicula}">
-                                                            <option value="${pel.PEL_ID}" >${pel.PEL_NOMBRE}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Precio</label>
-                                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                                    <input type="number" name="valor" id="costo"  min="0" step="0.01" class="form-control has-feedback-right" value="0" readonly>
-                                                    <span class="fa fa-dollar form-control-feedback right" aria-hidden="true"></span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
                                                 <label class="control-label col-md-1 col-sm-1 col-xs-12">FECHA ALQUILER</label>
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <input type="Date" name="fechaDesde" class="form-control has-feedback-left" id="fechaDesde">
@@ -105,7 +87,24 @@
                                                 </div>
                                             </div>
                                             <br>
+                                           
                                             <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Pelicula</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <input type="text" name="pelBuscada" id="pelBuscada" class="form-control  has-feedback-left" maxlength="10">
+                                                    <span class="fa fa-credit-card form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                                <div class="col-md-6 col-sm-5 col-xs-3 form-group has-feedback">
+                                                    <a class="btn btn-outline-light" id="buscarPelicula"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+                                                    <label  id="errorPel" class="text-danger" hidden></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="filas">
+                                                <div id="fila0">
+                                                    
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                                                     <input type="submit" value="Guardar" class="btn btn-round btn-success col-md-4">
                                                     <a href="index.htm" class="btn btn-round  btn-warning col-md-4">Regresar</a>
@@ -184,7 +183,44 @@
                         }
                     }
                 });
-            })
+            });
+            var i =0;
+            $("#buscarPelicula").click(function () {
+                var pelicula = $("#pelBuscada").val();
+                $.ajax({
+                    url: 'getPelicula.htm?pelicula=' + pelicula,
+                    success: function (data) {
+                        if (data == "error") {
+                            $('#errorPel').removeAttr('hidden');
+                            $("#errorPel").html("No existe el la Pelicula");
+                            $("#pelBuscada").val("");
+                        } else {
+                            var valores = data.split(",");
+                            $("#fila"+i).append('<div class="col-md-offset-1 col-md-3 col-sm-3 col-xs-12">'+
+                                                    '<input class="form-control" name="listPeliculas['+i+'].id" id="listPeliculas['+i+'].id" readonly value="'+valores[0]+'">'+
+                                                    '</div>'+
+                                                    '<div class="col-md-3 col-sm-3 col-xs-12">'+
+                                                    '<input class="form-control " name="listPeliculas['+i+'].nombre" id="listPeliculas['+i+'].nombre" readonly value="'+valores[1]+'">'+
+                                                    '</div>'+
+                                                    '<div class="col-md-3 col-sm-3 col-xs-12">'+
+                                                    '<input class="form-control" name="listPeliculas['+i+'].costo" id="listPeliculas['+i+'].costo" readonly value="'+valores[2]+'">'+
+                                                    '</div>'+
+                                                    '<div class="col-md-2 col-sm-2 col-xs-12">'+
+                                                    '<a class="borrar btn btn-outline-light" id="borrarPel'+i+'" ><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>'+
+                                                    '</div>');
+                             $("#filas").append('<div id="fila'+(i+1)+'"></div>')
+            $("#errorPel").attr('hidden', true);
+                            i++;
+                            $("#pelBuscada").val("");
+                        }
+                    }
+                });
+            });
+            $("div#filas").on("click","a.borrar", function(){
+                var id = $(this).attr('id').split("borrarPel");
+                var ids="#fila"+id[1];
+                $(ids).remove();
+});
         });
     </script>
 </html>
