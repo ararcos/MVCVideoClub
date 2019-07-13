@@ -104,6 +104,14 @@
                                                     
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Total</label>
+                                                <div class="col-md-4 col-sm-4 col-xs-9">
+                                                    <input type="number" name="costo" id="costo"  min="0" step="0.01" class="form-control has-feedback-right" required="required">
+                                                    <span class="fa fa-dollar form-control-feedback right" aria-hidden="true"></span>
+                                                    </select>
+                                                </div>
+                                            </div>
                                              <div class="form-group">
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                                                     <input type="submit" value="Guardar" class="btn btn-round btn-success col-md-4">
@@ -185,8 +193,11 @@
                 });
             });
             var i =0;
+            var costo = 0;
+            var costos=[];
             $("#buscarPelicula").click(function () {
                 var pelicula = $("#pelBuscada").val();
+                
                 $.ajax({
                     url: 'getPelicula.htm?pelicula=' + pelicula,
                     success: function (data) {
@@ -196,6 +207,8 @@
                             $("#pelBuscada").val("");
                         } else {
                             var valores = data.split(",");
+                            costos[i]=valores[2];
+                           costo+=parseFloat(costos[i]);
                             $("#fila"+i).append('<div class="col-md-offset-1 col-md-3 col-sm-3 col-xs-12">'+
                                                     '<input class="form-control" name="listPeliculas['+i+'].id" id="listPeliculas['+i+'].id" readonly value="'+valores[0]+'">'+
                                                     '</div>'+
@@ -203,12 +216,13 @@
                                                     '<input class="form-control " name="listPeliculas['+i+'].nombre" id="listPeliculas['+i+'].nombre" readonly value="'+valores[1]+'">'+
                                                     '</div>'+
                                                     '<div class="col-md-3 col-sm-3 col-xs-12">'+
-                                                    '<input class="form-control" name="listPeliculas['+i+'].costo" id="listPeliculas['+i+'].costo" readonly value="'+valores[2]+'">'+
+                                                    '<input class="form-control costo" name="listPeliculas['+i+'].costo" id="listPeliculas['+i+'].costo" readonly value="'+valores[2]+'">'+
                                                     '</div>'+
                                                     '<div class="col-md-2 col-sm-2 col-xs-12">'+
                                                     '<a class="borrar btn btn-outline-light" id="borrarPel'+i+'" ><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>'+
                                                     '</div>');
                              $("#filas").append('<div id="fila'+(i+1)+'"></div>')
+                             $("#costo").val(costo);
             $("#errorPel").attr('hidden', true);
                             i++;
                             $("#pelBuscada").val("");
@@ -217,10 +231,21 @@
                 });
             });
             $("div#filas").on("click","a.borrar", function(){
+               
                 var id = $(this).attr('id').split("borrarPel");
                 var ids="#fila"+id[1];
-                $(ids).remove();
+                costo-=parseFloat(costos[id[1]]);
+                if (costo==0) {
+                    $("#costo").val("");
+    
+}else{
+    $("#costo").val(costo);
+}
+                $('#fila'+id[1]).remove();
 });
+$("#costo").keydown(function(e){
+        e.preventDefault();
+    });
         });
     </script>
 </html>

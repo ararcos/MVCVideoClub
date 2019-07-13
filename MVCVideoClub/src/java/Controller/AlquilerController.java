@@ -60,8 +60,8 @@ public class AlquilerController {
     
     @RequestMapping(value="/alquiler/agregar.htm", method = RequestMethod.POST )
     public ModelAndView Agregar(Alquiler alquiler){
-        System.out.println(alquiler.getSocio().getCedula()+" "+alquiler.getSocio().getNombre());
-        Alquiler newAlquiler = new Alquiler();
+        if (alquiler.getListPeliculas().size() !=0 ) {
+            Alquiler newAlquiler = new Alquiler();
         Predicate<Pelicula> condicion = nuevo -> nuevo.getId() == 0;
         alquiler.getListPeliculas().removeIf(condicion);
         if (alquiler.getSocId()==0 && alquiler.getSocio().getNombre()!="") {
@@ -76,7 +76,12 @@ public class AlquilerController {
         this.jdbcTemplate.update(sql1,soc.getId(),alquiler.getListPeliculas().get(i).getId(),alquiler.getFechaDesde(),alquiler.getFechaHasta(),
                 alquiler.getListPeliculas().get(i).getCosto());
         }
-     return new ModelAndView("redirect:/alquiler/index.htm");
+        return new ModelAndView("redirect:/alquiler/index.htm");
+        }
+        else{
+            return new ModelAndView("redirect:/alquiler/agregar.htm");
+        }
+     
     }
     @RequestMapping(value="/alquiler/editar.htm", method = RequestMethod.GET)
     public ModelAndView Actualizar(HttpServletRequest request) {
