@@ -60,7 +60,7 @@
                                         </form>
                                         <div class="card-body">
                                             <c:if test="${datos!=null}">
-                                                <a href="" class="btn btn-primary">IMPRIMIR</a>   
+                                                <a href="imprimirPDF.htm" class="btn btn-primary">IMPRIMIR</a>   
                                                 <table class="table table-hover">
                                                     <thead>
                                                         <tr>

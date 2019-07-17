@@ -6,11 +6,13 @@
 package Controller;
 
 import Config.Conexion;
+import Mapper.ReporteMapper;
 import Mapper.alquilerMapper;
 import Mapper.peliculaMapper;
 import Mapper.socioMapper;
 import Models.Alquiler;
 import Models.Pelicula;
+import Models.Reporte;
 import Models.Socio;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,7 +40,17 @@ public class AlquilerController {
     String ruta;
     int id;
     private int SocioId;
-
+    @RequestMapping("index.htm")
+    public ModelAndView Index() {
+        String sql="SELECT COUNT(*) as valores,ALQ_ID as labels FROM alquiler ";
+        Reporte reporte = this.jdbcTemplate.queryForObject(sql,new ReporteMapper());
+        String sql2="SELECT COUNT(*) as valores, p.PEL_NOMBRE as labels FROM alquiler a, pelicula p WHERE a.PEL_ID=p.PEL_ID GROUP BY p.PEL_ID ORDER by valores DESC LIMIT 1";
+        Reporte reporte2 = this.jdbcTemplate.queryForObject(sql2,new ReporteMapper());
+        mav.addObject("alquilerNumero", reporte.getValores());
+        mav.addObject("pelicula", reporte2.getLabels());
+        mav.setViewName("index");
+        return mav;
+    }
     @RequestMapping("/alquiler/index.htm")
     public ModelAndView Listar() {
         String sql = "SELECT a.*,s.SOC_NOMBRE,p.PEL_NOMBRE FROM alquiler a,socio s,pelicula p WHERE a.SOC_ID=s.SOC_ID AND a.PEL_ID=p.PEL_ID ORDER BY a.ALQ_ID ASC";

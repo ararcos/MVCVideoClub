@@ -7,10 +7,18 @@ package Controller;
 
 import Config.Conexion;
 import Mapper.ReporteMapper;
+import Mapper.alquilerMapper;
+import Models.Alquiler;
 import Models.Reporte;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ReporteController {
     ModelAndView mav=new ModelAndView();
     Conexion con= new Conexion();
-    
+    String desdePdf,hastaPdf;
     JdbcTemplate jdbcTemplate = new JdbcTemplate(con.Conectar());
     
     @RequestMapping(value="/reporte/alquilerMensual.htm", method = RequestMethod.GET )
@@ -99,6 +107,8 @@ public class ReporteController {
     @RequestMapping(value="/reporte/alquilerMensualTabla.htm", method = RequestMethod.POST )
     public ModelAndView AlquilerMensualTabla(String desde, String hasta ){
         if (!desde.equals("") && !hasta.equals("")) {
+            desdePdf=desde;
+            hastaPdf=hasta;
             String sql="SELECT s.SOC_NOMBRE as nombre ,p.PEL_NOMBRE as pelicula,"
                     + "a.ALQ_VALOR as valor,a.ALQ_FECHA_DESDE as desde "
                     + "FROM alquiler a, pelicula p, socio s "
@@ -112,5 +122,15 @@ public class ReporteController {
      
      mav.setViewName("reporte/alquilerMensualTabla");
      return mav;
+    }
+    @RequestMapping(value="/reporte/imprimirPDF.htm", method = RequestMethod.GET )
+    public void imprimirPDF( HttpServletRequest request,
+                                     HttpServletResponse response){
+        String sql="SELECT a.*,s.SOC_NOMBRE,s.SOC_TELEFONO,s.SOC_CORREO,s.SOC_DIRECCION,s.SOC_CEDULA,p.PEL_NOMBRE "
+                    + "FROM alquiler a, pelicula p, socio s "
+                    + "WHERE s.SOC_ID=a.SOC_ID AND p.PEL_ID = a.PEL_ID AND "
+                    + "a.ALQ_FECHA_DESDE BETWEEN '"+desdePdf+"' AND '"+hastaPdf+"'";
+        List<Alquiler> datos = this.jdbcTemplate.query(sql,new alquilerMapper());
+        
     }
 }

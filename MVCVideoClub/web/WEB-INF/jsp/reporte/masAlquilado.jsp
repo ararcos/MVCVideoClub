@@ -93,7 +93,7 @@
             data: {
                 labels: ${labels},
                 datasets: [{
-                        backgroundColor: ["#42cef5", "#8d42f5", "#b528bd", "#d64b79", "#eff21d", "#34ab24"],
+                        backgroundColor: ["#42cef5", "#8d42f5", "#b528bd", "#d64b79", "#eff21d", "#34ab24","#f54542","#5925c2","#c225b0"],
                         data:${valores}
 
                     }]
